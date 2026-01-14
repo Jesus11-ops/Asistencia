@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Líderes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="container">
+  <section class="card formulario">
+    <h1>🔐 Acceso líderes</h1>
+    <p class="muted">Ingresa con tu correo de líder</p>
+    <div style="margin-top:12px">
+      <input type="email" id="email" placeholder="Correo">
+      <input type="password" id="password" placeholder="Contraseña" style="margin-top:8px">
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <button onclick="login()">Ingresar</button>
+        <button type="button" class="btn" onclick="toggleCrear()">Crear usuario</button>
+      </div>
+
+      <div id="createUserBox" style="display:none;margin-top:12px" class="create-box">
+        <h4 style="margin:0 0 8px 0">Crear usuario (máx 3)</h4>
+        <input type="email" id="newEmail" placeholder="Correo nuevo">
+        <input type="password" id="newPassword" placeholder="Contraseña nueva" style="margin-top:8px">
+        <div style="margin-top:10px;display:flex;gap:8px">
+          <button onclick="crearUsuario()">Crear usuario</button>
+          <button type="button" onclick="toggleCrear()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="module" src="app.js"></script>
+<script type="module" src="auth.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Asistencia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="container">
+  <div>
+    <h1>📊 Asistencia Iglesia</h1>
+    <p class="muted">Registra cada culto rápidamente</p>
+  </div>
+  <div class="header-right">
+    <div class="membresia-box card small" aria-label="Total membresía">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="membresia-label muted">Membresía</div>
+        <div id="membresiaValue" class="membresia-value">0</div>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:8px;">
+        <button class="btn edit small" type="button" onclick="agregarMembresia()">Agregar</button>
+        <button class="btn small" type="button" onclick="editarMembresia()">Editar</button>
+      </div>
+    </div>
+    <div class="muted"><a href="index.html">Volver</a></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <form class="grid" onsubmit="event.preventDefault()">
+      <input type="date" id="fecha">
+      <input type="number" id="dama" placeholder="Damas">
+      <input type="number" id="caballeros" placeholder="Caballeros">
+      <input type="number" id="adolescentes" placeholder="Adolescentes">
+      <input type="number" id="ninos" placeholder="Niños">
+      <input type="number" id="visitas" placeholder="Visitas">
+
+      <div class="actions" style="grid-column:1 / -1;">
+        <button type="button" onclick="guardar()">Guardar culto</button>
+        <button type="button" class="secondary" onclick="exportarExcel()">Exportar Excel</button>
+      </div>
+    </form>
+  </section>
+
+  <h2>📅 Detalle de cultos — Primer semestre</h2>
+  <section id="totalesPrimero" class="card">
+    <!-- detalle dinámico primer semestre -->
+  </section>
+
+  <h2 style="margin-top:22px">📅 Detalle de cultos — Segundo semestre</h2>
+  <section id="totalesSegundo" class="card">
+    <!-- detalle dinámico segundo semestre -->
+  </section>
+
+</main>
+
+<footer class="container muted">Iglesia pentecostal unida de colombia</footer>
+
+<script type="module" src="app.js"></script>
+<script src="exportar.js"></script>
+</body>
+</html>

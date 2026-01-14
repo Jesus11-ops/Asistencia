@@ -1,0 +1,205 @@
+:root{
+  --bg:#f0f4f8;
+  --card:#ffffff;
+  --primary:#2b6cb0;
+  --accent:#2b8a7a;
+  --muted:#6b7280;
+  --radius:10px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg,#eef2f7 0%,var(--bg) 100%);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:32px 16px;
+}
+
+.container{
+  max-width:1000px;
+  margin:0 auto;
+}
+
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+header h1{font-size:1.6rem;margin:0}
+header p{margin:0;color:var(--muted)}
+
+.header-right{display:flex;align-items:center;gap:14px}
+
+.membresia-box.small{padding:10px 12px;border-radius:10px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:160px;margin-bottom:12px}
+.membresia-label{font-size:0.85rem}
+.membresia-value{font-weight:800;color:var(--primary);font-size:1.2rem}
+.btn.small{padding:6px 8px;border-radius:8px;font-weight:700}
+
+/* Mejora visual para el enlace 'Volver' en el header */
+.header-right a{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:10px;
+  color:var(--primary);
+  background:rgba(43,108,176,0.06);
+  border:1px solid rgba(43,108,176,0.12);
+  text-decoration:none;
+  font-weight:700;
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.header-right a:hover{
+  transform:translateY(-2px);
+  background:rgba(43,108,176,0.12);
+  box-shadow:0 6px 18px rgba(43,108,176,0.08);
+}
+.header-right a:focus{outline:2px solid rgba(43,108,176,0.16);outline-offset:3px}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:0 6px 18px rgba(12,22,35,0.06);
+  padding:18px;
+}
+
+.grid{
+  display:grid;
+  gap:12px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:540px){
+  .grid{grid-template-columns:1fr}
+}
+
+/* notas: diseño sin paneles laterales; el resumen ahora está dentro de cada mes */
+
+input[type="date"], input[type="number"], input[type="email"], input[type="password"]{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #e6e9ef;
+  border-radius:8px;
+  font-size:0.95rem;
+}
+
+button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+button.secondary{background:var(--accent)}
+
+.actions{display:flex;gap:8px;align-items:center}
+
+h2{margin-top:22px;margin-bottom:8px;color:#0b1220}
+
+#resumenMensual, #totales{
+  margin-top:10px;
+}
+
+.summary-row{display:flex;gap:12px;flex-wrap:wrap}
+.summary-item{background:#ffffff;padding:14px;border-radius:10px;border:1px solid #eef3f7;min-width:120px;flex:1 1 140px}
+
+.muted{color:var(--muted);font-size:0.9rem}
+
+footer{margin-top:28px;text-align:center;color:var(--muted);font-size:0.9rem}
+
+.formulario{max-width:360px;margin:auto}
+
+/* Detalle de cultos: mostrar registros en columnas responsivas */
+/* Grid de meses: usar columnas más anchas para que el panel tenga buen espacio */
+#totales{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap:20px;
+  align-items:start;
+}
+
+.registro{
+  background:#ffffff;
+  border:1px solid #eef3f7;
+  padding:12px 14px;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(8,15,25,0.03);
+  line-height:1.4;
+}
+
+.registro-actions{display:flex;gap:8px;margin-top:12px}
+.registro .btn{padding:8px 10px;font-size:0.95rem}
+
+@media (max-width:540px){
+  #totales{gap:12px}
+}
+
+/* Estilos para paneles mensuales plegables */
+.mes-detalle{
+  border:1px solid #eef3f7;
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.mes-detalle summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px 16px;
+  display:block;
+  background:transparent;
+  font-weight:700;
+  color:var(--primary);
+  border-bottom:1px solid #f6f9fb;
+}
+
+.mes-detalle summary::-webkit-details-marker{display:none}
+
+.summary-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.summary-header .right{color:var(--muted);font-weight:700}
+
+/* Línea del mes con la badge de cultos */
+.month-line{display:flex;align-items:center;gap:12px}
+.cultos-badge{background:var(--primary);color:#fff;padding:6px 12px;border-radius:999px;font-weight:800;font-size:0.95rem;box-shadow:0 4px 10px rgba(43,108,176,0.12)}
+
+.registros-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding:14px}
+
+.registro-header{font-weight:600;margin-bottom:8px;color:#10263b}
+.registro-body div{margin-bottom:6px;color:#133047}
+
+/* Subtítulo sutil para resumen dentro del panel */
+.mes-detalle .subtitulo{font-size:0.9rem;color:var(--muted);margin-top:4px}
+.mes-detalle .month-title{font-weight:700}
+
+/* Espaciado y estilo para las secciones de semestre */
+#totalesPrimero, #totalesSegundo{padding:14px;display:grid;gap:12px}
+
+/* Encabezados de semestre */
+h2{display:block}
+
+/* Botones de acción en la cabecera del mes */
+.btn{border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700}
+.btn.edit{background:#f0f5ff;color:var(--primary);border:1px solid rgba(43,108,176,0.08)}
+.btn.delete{background:#fee2e2;color:#b91c1c;border:1px solid rgba(185,28,28,0.08)}
+.total-label{font-size:1rem;color:#1f2937;margin-bottom:6px}
+
+.create-box{background:var(--card);border:1px solid #eef3f7;padding:12px;border-radius:8px}
+.create-box input{width:100%;padding:8px 10px;border-radius:8px;border:1px solid #e6e9ef}
+
+@media (max-width:900px){
+  /* Un solo panel por fila en pantallas medianas/pequeñas */
+  #totales{grid-template-columns:1fr}
+  .summary-header{flex-direction:column;align-items:flex-start;gap:6px}
+  .cultos-badge{transform:none}
+}
+
+@media (max-width:540px){
+  .registros-grid{grid-template-columns:1fr}
+  .registro{padding:10px}
+}
+
+
