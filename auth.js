@@ -34,7 +34,7 @@ window.crearUsuario = async function(){
     // comprobar cuántos usuarios existen en la colección `users` (meta control)
     const col = collection(db, 'users');
     const snaps = await getDocs(col);
-    if(snaps.size >= 3){ alert('Ya existen 3 usuarios. No se pueden crear más.'); return; }
+    if(snaps.size >= 4){ alert('Ya existen 4 usuarios. No se pueden crear más.'); return; }
 
     // crear usuario en Firebase Auth
     const cred = await createUserWithEmailAndPassword(auth, email, password);
