@@ -105,8 +105,33 @@ window.exportarExcel = async function exportarExcel() {
       const a = document.createElement('a');
       a.href = url;
       a.download = 'asistencia.xlsx';
-      a.click();
-      URL.revokeObjectURL(url);
+      a.style.display = 'none';
+
+      const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent);
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+      if (isIOS || isSafari) {
+        // En iOS / Safari el atributo download a veces es ignorado;
+        // abrir en nueva pestaña permite al usuario guardar el archivo.
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+          a.remove();
+        }, 2000);
+      } else if (navigator.msSaveOrOpenBlob) {
+        // Fallback para navegadores legacy (IE/Edge)
+        navigator.msSaveOrOpenBlob(blob, 'asistencia.xlsx');
+      } else {
+        // Comportamiento estándar: añadir al DOM, disparar click y limpiar después
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+          a.remove();
+        }, 1500);
+      }
     };
 
     if (window.ExcelJS) {
